@@ -245,21 +245,22 @@ L.canvasFlowmapLayer(data, { //data is the variable name I used for defining the
 
                       <li>The map shows the flows you have selected and saved (<a href="https://raw.githubusercontent.com/neiugis/lab6/gh-pages/map/base.html" target="_blank">sample code</a>):</li>
                     <iframe id="final" src="map/base.html" width=98% height=520 frameborder=0></iframe>
-                  Note the <b>flow direction</b> is correctly showing inflow to Cook County defined by the origin/destination coordinates in the function. <br>By default, the origin location is displayed in larger yellow circle marker, while destinations are in smallr solid blue circle marker. If you are interested in customizing the markers for the flowmap, check out <a href="https://github.com/jwasilgeo/Leaflet.Canvas-Flowmap-Layer#style-example" target="_blank">this link</a> (scroll down to the <i>style example</i> portion) for an example.</ul>
+                  Note the <b>flow direction</b> is correctly showing inflow to Cook County defined by the origin/destination coordinates in the function. <br>By default, the origin location is displayed in larger yellow circle marker, while destinations are in smallr solid blue circle marker. If you are interested in customizing the markers for the flowmap, check out <a href="https://github.com/jwasilgeo/Leaflet.Canvas-Flowmap-Layer#style-example" target="_blank">this link</a> (scroll down to the <b>style example</b> portion) for an example.</ul>
 
 
 
 
                   <p><a id="custom" title="Customize Flowlines" class="toc-item"></a></p>
                   <h3><i class="fa fa-paint-brush"></i> Customize Flowlines</h3>
-                  <p>All the flowlines are displayed in the same style by default. We could further customize the lines by using thicker lines for high volumn flows, changing colors, etc. </p>
+                  <p>All the flowlines are displayed in the same style by default. We could further customize the lines by using thicker lines for higher volumn flows, changing colors, etc. </p>
                   <ul>
                   <li>Place the following lines INSIDE the <code>L.canvasFlowmapLayer</code> function, check out the sample code below if in doubt:
                   <div class="code-container">
                                
                             <button class="copy-btn" title="Click to copy" onclick="copyToClipboard(this)"><i class="fa-regular fa-copy"></i> <b>Copy Code</b></button>
                                
-                               <pre><code class="language-js">canvasBezierStyle: {
+                               <pre><code class="language-js">
+canvasBezierStyle: {
 //This example demonstrates the use of graduated symbols (class breaks) for the flowlines
 //Other options: https://developers.arcgis.com/documentation/common-data-types/renderer-objects.htm
   type: 'classBreaks',
