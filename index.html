@@ -192,12 +192,13 @@
                         </li>
 
 
-                      <li>The flow map requires additional libraries: Tween.js and CanvasFlowmapLayer.js that you will need to reference in your HTML document. There is a hosted version of Tween.js but you will need to <a href="https://raw.githubusercontent.com/jwasilgeo/Leaflet.Canvas-Flowmap-Layer/master/src/CanvasFlowmapLayer.js" target="_blank"><b>download and save the CanvasFlowmapLayer.js</b></a> to your lab 6 map folder and reference it using RELATIVE URL.
+                      <li>The flow map requires additional libraries: Tween.js and CanvasFlowmapLayer.js that you will need to reference in your HTML document. There is a hosted version of Tween.js but you will need to <a href="https://raw.githubusercontent.com/jwasilgeo/Leaflet.Canvas-Flowmap-Layer/master/src/CanvasFlowmapLayer.js" target="_blank"><b>download and save the CanvasFlowmapLayer.js</b></a> to your lab 6 map folder and reference it using RELATIVE URL. </li>
+                         <li> Add the lines below to the <code>head</code> section of your map html.
 <div class="code-container">
                                
                             <button class="copy-btn" title="Click to copy" onclick="copyToClipboard(this)"><i class="fa-regular fa-copy"></i> <b>Copy Code</b></button>
                                
-                               <pre><code class="language-js">                   
+                               <pre><code class="language-js">         
 &lt;!-- Load animation tweening library requirement for CanvasFlowMapLayer --&gt;
 &lt;script src=&quot;https://unpkg.com/@tweenjs/tween.js@18.6.4/dist/tween.umd.js&quot;&gt;&lt;/script&gt;
 
@@ -205,7 +206,12 @@
 &lt;script src=&quot;CanvasFlowmapLayer.js&quot;&gt;&lt;/script&gt;</code></pre></div></li>
 
                       <li>Reference the data file in the <code>head</code> section as usual:
-                      <pre><code class="language-html">&lt;script type=&quot;text/javascript&quot; src=&quot;cook.js&quot;&gt;&lt;/script&gt;</code></pre></li>
+<div class="code-container">
+                               
+                            <button class="copy-btn" title="Click to copy" onclick="copyToClipboard(this)"><i class="fa-regular fa-copy"></i> <b>Copy Code</b></button>
+                               
+    <pre><code class="language-js">     
+&lt;script type=&quot;text/javascript&quot; src=&quot;cook.js&quot;&gt;&lt;/script&gt;</code></pre></div></li>
 
                       <li>The flows are added through the <code>L.canvasFlowmapLayer</code> function. Add the following lines BELOW the <code>L.tileLayer</code> part. Read the comments for more explanations and let me know if you have any questions.
                       <div class="code-container">
