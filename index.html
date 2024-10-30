@@ -34,6 +34,83 @@
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
       </script>
+        
+         <style>
+            .code-container {
+            position: relative; /* Allows the button to be positioned inside the container */
+            background-color: #f7f7f8;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: auto; /* Ensures scroll if content exceeds width */
+        }
+
+        /* Style for the pre and code block */
+        .code-container pre {
+            margin: 0;
+            background: none;
+            border: 1px solid #f7f7f8;
+            padding: 0px 0 0 0; /* Add padding to the top for the button */
+            white-space: pre-wrap;  /* Enable line wrapping */
+            word-wrap: break-word;  /* Allow breaking long words */
+            overflow-wrap: break-word; /* Break long words in modern browsers */
+            font-size: 14px;
+            overflow-x: auto; /* Allow horizontal scroll if needed */
+        }
+
+        /* Style for the copy button */
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #566573;
+            color: #fdfefe;
+            border: none;
+            padding: 4px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Tooltip styling */
+        .copy-btn[data-tooltip]::after {
+            content: attr(data-tooltip); /* Display the tooltip text */
+            position: absolute;
+            bottom: 125%; /* Position above the button */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333; /* Dark background for the tooltip */
+            color: #fff; /* White text color */
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0; /* Initially hidden */
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100; /* Ensure it appears above other elements */
+        }
+
+        /* Show the tooltip on hover */
+        .copy-btn:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Icon inside the button */
+        .copy-btn i {
+            margin-right: 5px; /* Space between the icon and text */
+        }
+
+        /* Change background color when hovering over the button */
+        .copy-btn:hover {
+            background-color: #566573;
+        }
+        
+        </style>
 
     </head>
 
@@ -116,18 +193,27 @@
 
 
                       <li>The flow map requires additional libraries: Tween.js and CanvasFlowmapLayer.js that you will need to reference in your HTML document. There is a hosted version of Tween.js but you will need to <b>download and save the CanvasFlowmapLayer.js</b> <a href="https://raw.githubusercontent.com/jwasilgeo/Leaflet.Canvas-Flowmap-Layer/master/src/CanvasFlowmapLayer.js" target="_blank">here</a> and reference it using RELATIVE URL.
-
-                      <pre><code class="language-html">&lt;!-- Load animation tweening library requirement for CanvasFlowMapLayer --&gt;
+<div class="code-container">
+                               
+                            <button class="copy-btn" title="Click to copy" onclick="copyToClipboard(this)"><i class="fa-regular fa-copy"></i> <b>Copy Code</b></button>
+                               
+                               <pre><code class="language-js">                   
+&lt;!-- Load animation tweening library requirement for CanvasFlowMapLayer --&gt;
 &lt;script src=&quot;https://unpkg.com/@tweenjs/tween.js@18.6.4/dist/tween.umd.js&quot;&gt;&lt;/script&gt;
 
 &lt;!-- Load CanvasFlowMapLayer; change the path (relative URL) if necessary --&gt;
-&lt;script src=&quot;CanvasFlowmapLayer.js&quot;&gt;&lt;/script&gt;</code></pre></li>
+&lt;script src=&quot;CanvasFlowmapLayer.js&quot;&gt;&lt;/script&gt;</code></pre></div></li>
 
                       <li>Reference the data file in the <code>head</code> section as usual:
                       <pre><code class="language-html">&lt;script type=&quot;text/javascript&quot; src=&quot;cook.js&quot;&gt;&lt;/script&gt;</code></pre></li>
 
                       <li>The flows are added through the <code>L.canvasFlowmapLayer</code> function. Add the following lines BELOW the <code>L.tileLayer</code> part. Read the comments for more explanations and let me know if you have any questions.
-                      <pre><code class="language-javascript">L.canvasFlowmapLayer(data, { //data is the variable name I used for defining the cook.js data
+                      <div class="code-container">
+                               
+                            <button class="copy-btn" title="Click to copy" onclick="copyToClipboard(this)"><i class="fa-regular fa-copy"></i> <b>Copy Code</b></button>
+                               
+                               <pre><code class="language-js">
+L.canvasFlowmapLayer(data, { //data is the variable name I used for defining the cook.js data
   originAndDestinationFieldIds: {
     originUniqueIdField: 'GEOID_B',  //origin ID, use GEOID_A if you want to reverse the flow
     originGeometry: { //origin coordinates 
@@ -149,7 +235,7 @@
                                   // https://jwasilgeo.github.io/Leaflet.Canvas-Flowmap-Layer/docs/comparison/
   animationEasingType: 'In',
   animationDuration: 2000  // in millisecond, the larger the number the slower
-}).addTo(map);</code></pre></li>
+}).addTo(map);</code></pre></div></li>
 
                       <li>The map shows the flows you have selected and saved (<a href="https://raw.githubusercontent.com/neiugis/lab6/gh-pages/map/base.html" target="_blank">sample code</a>):</li>
                     <iframe id="final" src="map/base.html" width=98% height=520 frameborder=0></iframe>
@@ -163,7 +249,11 @@
                   <p>All the flowlines are displayed in the same style by default. We could further customize the lines by using thicker lines for high volumn flows, changing colors, etc. </p>
                   <ul>
                   <li>Place the following lines INSIDE the <code>L.canvasFlowmapLayer</code> function, check out the sample code below if in doubt:
-                  <pre><code class="language-javascript">canvasBezierStyle: {
+                  <div class="code-container">
+                               
+                            <button class="copy-btn" title="Click to copy" onclick="copyToClipboard(this)"><i class="fa-regular fa-copy"></i> <b>Copy Code</b></button>
+                               
+                               <pre><code class="language-js">canvasBezierStyle: {
 //This example demonstrates the use of graduated symbols (class breaks) for the flowlines
 //Other options: https://developers.arcgis.com/documentation/common-data-types/renderer-objects.htm
   type: 'classBreaks',
@@ -196,7 +286,7 @@
       lineCap: 'round',
     }
   }],
-},</code></pre></li>
+},</code></pre></div></li>
 
 <!--
               <li>This example demonstrates the use of graduated symbols (class breaks) for the flow lines. If you are looking for more options to customize the flow map, the two links below might be helpful:
@@ -217,7 +307,12 @@
 
                 <ul>
                   <li>Place the following lines in the <code>script</code> section (e.g., below <code>L.canvasFlowmapLayer</code>) to add the title as a control pane:
-                  <pre><code class="language-javascript">var title = L.control({position: 'topright'}); // position of the title
+<div class="code-container">
+                               
+                            <button class="copy-btn" title="Click to copy" onclick="copyToClipboard(this)"><i class="fa-regular fa-copy"></i> <b>Copy Code</b></button>
+                               
+                               <pre><code class="language-js">
+var title = L.control({position: 'topright'}); // position of the title
 
 title.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'title'); // create a div with a class "title"
@@ -225,23 +320,28 @@ title.onAdd = function (map) {
     return this._div;
 };
 
-title.addTo(map);</code></pre></li>
+title.addTo(map);</code></pre></div></li>
 
                 <li>The title shows up at the top right corner as the position specifies. We could also add some styles to the title control to make it look nice. Place the following lines in the <code>style</code> tag (the <code>head</code>section):
-                <pre><code class="language-css">.title {
+<div class="code-container">
+                               
+                            <button class="copy-btn" title="Click to copy" onclick="copyToClipboard(this)"><i class="fa-regular fa-copy"></i> <b>Copy Code</b></button>
+                               
+                               <pre><code class="language-js">
+.title {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
     background: white;
     background: rgba(255,255,255,0.8);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
-}</code></pre></li>
+}</code></pre></div></li>
 
                 <li>If you would like to try some <b>fun fonts</b>, here is <a href="https://www.w3schools.com/howto/howto_google_fonts.asp" target="_blank">a list of Google fonts</a> you could explore, with their <b>Try It</b> examples (remember to reference their library!). </li>
 
                   <li>I tried the <b>Acme</b> font and my final map looks like (<a href="https://raw.githubusercontent.com/neiugis/lab6/gh-pages/map/map6.html" target="_blank">sample code</a>):</li>
                 <iframe id="final" src="map/map6.html" width=98% height=520 frameborder=0></iframe></ul>
-                </ul>
+                
 
                   <p><a id="deliverable" title="Deliverables" class="toc-item"></a></p>
                   <h3><i class="fa fa-paint-brush"></i> Deliverables</h3>
@@ -258,8 +358,7 @@ title.addTo(map);</code></pre></li>
             <br><br>
             </div>
             </div>
-        </article>
-
+       
           <footer>
             <div class="wrap">
 
@@ -269,6 +368,28 @@ title.addTo(map);</code></pre></li>
           </footer>
 
             <script src="prism.js"></script>
+    
+        <script>
+            function copyToClipboard(button) {
+                // Find the code block within the same container as the button
+                const codeContainer = button.closest('.code-container');
+                const codeText = codeContainer.querySelector('pre code').innerText;
 
+                // Copy the code text to the clipboard
+                navigator.clipboard.writeText(codeText).then(() => {
+                    // Change the button text to "Copied!" on success
+                    button.innerHTML = ' <i class="fa-solid fa-check"></i> <strong>Copied!</strong>';
+                    button.style.backgroundColor = '#6cbf43'; // Green background for success
+
+                    // Reset the button text and background color after 2 seconds
+                    setTimeout(() => {
+                        button.innerHTML = '<i class="fa-regular fa-copy"></i> <strong>Copy code</strong>';
+                        button.style.backgroundColor = '#566573'; // Reset to original color
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy:', err);
+                });
+            }
+            </script></article>
      </body>
 </html>
